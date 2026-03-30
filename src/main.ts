@@ -18,9 +18,8 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ResponseInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(config.get('DB_PORT') ?? 3000);
   console.log(`✅ portifolio-api rodando em http://localhost:${port}`);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
-bootstrap();
+void bootstrap();

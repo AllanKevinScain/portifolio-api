@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { DevelopersModule } from './developers/developers.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AppController } from './developers/app.controller';
 
 // NEON CONSOLE
 @Module({
@@ -23,6 +24,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     DevelopersModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
 
