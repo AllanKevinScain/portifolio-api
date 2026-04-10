@@ -1,9 +1,10 @@
-import { IsString } from 'class-validator';
+import { IsString, IsUrl } from 'class-validator';
 
 export class CreateWorkDto {
-  constructor(title: string, description: string) {
+  constructor(title: string, description: string, image: string) {
     this.title = title;
     this.description = description;
+    this.image = image;
   }
 
   @IsString()
@@ -11,4 +12,8 @@ export class CreateWorkDto {
 
   @IsString()
   description: string;
+
+  @IsString()
+  @IsUrl()
+  image: string;
 }

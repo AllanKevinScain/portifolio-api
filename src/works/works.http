@@ -10,7 +10,8 @@ Content-Type: application/json
 
 {
     "title": "Faccat",
-    "description": "Um evento muito bonito que eu gostei"
+    "description": "Um evento muito bonito que eu gostei",
+    "image": "https://teste.com.br"
 }
 
 ### update developer
