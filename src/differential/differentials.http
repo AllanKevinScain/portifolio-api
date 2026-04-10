@@ -1,0 +1,25 @@
+### list differential
+GET http://localhost:5432/differential
+
+### get developer
+GET http://localhost:5432/differential/f4KRr9kdEdF5RqQJE4wvE
+
+### create developer
+POST http://localhost:5432/differential
+Content-Type: application/json
+
+{
+    "title": "Palestrante",
+    "description": "Falo um pouco"
+}
+
+### update developer
+PATCH http://localhost:5432/differential/MO15NfMGGaXQaFC1SGP5m
+Content-Type: application/json
+
+{
+    "title": "Trovador"
+}
+
+### delete developer
+DELETE http://localhost:5432/differential/MO15NfMGGaXQaFC1SGP5m

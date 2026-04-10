@@ -8,6 +8,7 @@ import { ProjectsModule } from './projetcs/projects.module';
 import { DevelopersModule } from './developers/developers.module';
 import { TechsModule } from './techs/techs.module';
 import { WorksModule } from './works/works.module';
+import { DifferentialModule } from './differential/differential.module';
 
 // NEON CONSOLE
 @Module({
@@ -31,6 +32,7 @@ import { WorksModule } from './works/works.module';
     ProjectsModule,
     TechsModule,
     WorksModule,
+    DifferentialModule,
   ],
   controllers: [AppController],
 })
