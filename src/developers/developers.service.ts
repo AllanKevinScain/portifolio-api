@@ -12,17 +12,17 @@ export class DevelopersService {
     private readonly repo: Repository<Developer>,
   ) {}
 
-  create(data: CreateDeveloperDto) {
-    const developer = this.repo.create(data);
-    return this.repo.save(developer);
-  }
-
   findAll() {
     return this.repo.find();
   }
 
   findOne(id: string) {
     return this.repo.findOneBy({ id });
+  }
+
+  create(data: CreateDeveloperDto) {
+    const developer = this.repo.create(data);
+    return this.repo.save(developer);
   }
 
   async update(id: string, data: UpdateDeveloperDto) {
