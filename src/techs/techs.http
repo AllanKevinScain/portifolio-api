@@ -1,0 +1,26 @@
+### list techs
+GET http://localhost:5432/techs
+
+### get developer
+GET http://localhost:5432/techs/T-sOMfrt1-tVfovo_0dY2
+
+### create developer
+POST http://localhost:5432/techs
+Content-Type: application/json
+
+{
+    "name": "React",
+    "description": "Expert.",
+    "nivel": "mid"
+}
+
+### update developer
+PATCH http://localhost:5432/techs/d9ypuv9H9yOJDt54ojN2s
+Content-Type: application/json
+
+{
+    "nivel": "stack"
+}
+
+### delete developer
+DELETE http://localhost:5432/techs/d9ypuv9H9yOJDt54ojN2s
