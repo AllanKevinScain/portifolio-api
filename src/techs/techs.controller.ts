@@ -37,7 +37,7 @@ export class TechsController {
     const proeject = await this.techsService.findOne(id);
 
     if (!proeject) {
-      throw new NotFoundException('Tecnologia não encontrada');
+      throw new NotFoundException('Tecnologia não encontrada!');
     }
 
     return proeject;
@@ -57,11 +57,11 @@ export class TechsController {
     const updated = await this.techsService.update(id, body);
 
     if (!updated) {
-      throw new NotFoundException('Tecnologia não encontrado');
+      throw new NotFoundException('Tecnologia não encontrada!');
     }
 
     return {
-      message: 'Tecnologia alterado com sucesso!',
+      message: 'Tecnologia alterada com sucesso!',
       data: updated,
     };
   }
@@ -72,7 +72,7 @@ export class TechsController {
     const deleted = await this.techsService.remove(id);
 
     if (!deleted) {
-      throw new NotFoundException('Tecnologia não encontrada');
+      throw new NotFoundException('Tecnologia não encontrada!');
     }
 
     return;

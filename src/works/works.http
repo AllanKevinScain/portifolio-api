@@ -1,0 +1,25 @@
+### list works
+GET http://localhost:5432/works
+
+### get developer
+GET http://localhost:5432/works/T-sOMfrt1-tVfovo_0dY2
+
+### create developer
+POST http://localhost:5432/works
+Content-Type: application/json
+
+{
+    "title": "Faccat",
+    "description": "Um evento muito bonito que eu gostei"
+}
+
+### update developer
+PATCH http://localhost:5432/works/AQaCHKcokwf_Zcq87WurR
+Content-Type: application/json
+
+{
+    "title": "Fac CLJ"
+}
+
+### delete developer
+DELETE http://localhost:5432/works/AQaCHKcokwf_Zcq87WurR

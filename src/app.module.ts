@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProjectsModule } from './projetcs/projects.module';
 import { DevelopersModule } from './developers/developers.module';
 import { TechsModule } from './techs/techs.module';
+import { WorksModule } from './works/works.module';
 
 // NEON CONSOLE
 @Module({
@@ -29,6 +30,7 @@ import { TechsModule } from './techs/techs.module';
     DevelopersModule,
     ProjectsModule,
     TechsModule,
+    WorksModule,
   ],
   controllers: [AppController],
 })

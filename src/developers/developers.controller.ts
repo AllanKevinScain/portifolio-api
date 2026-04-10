@@ -37,7 +37,7 @@ export class DevelopersController {
     const developer = await this.developersService.findOne(id);
 
     if (!developer) {
-      throw new NotFoundException('Desenvolvedor não encontrado');
+      throw new NotFoundException('Desenvolvedor não encontrado!');
     }
 
     return developer;
@@ -57,7 +57,7 @@ export class DevelopersController {
     const updated = await this.developersService.update(id, body);
 
     if (!updated) {
-      throw new NotFoundException('Desenvolvedor não encontrado');
+      throw new NotFoundException('Desenvolvedor não encontrado!');
     }
 
     return {
@@ -72,7 +72,7 @@ export class DevelopersController {
     const deleted = await this.developersService.remove(id);
 
     if (!deleted) {
-      throw new NotFoundException('Desenvolvedor não encontrado');
+      throw new NotFoundException('Desenvolvedor não encontrado!');
     }
 
     return;

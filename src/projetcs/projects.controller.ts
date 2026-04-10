@@ -37,7 +37,7 @@ export class ProjectsController {
     const proeject = await this.projectsService.findOne(id);
 
     if (!proeject) {
-      throw new NotFoundException('Projeto não encontrado');
+      throw new NotFoundException('Projeto não encontrado!');
     }
 
     return proeject;
@@ -57,7 +57,7 @@ export class ProjectsController {
     const updated = await this.projectsService.update(id, body);
 
     if (!updated) {
-      throw new NotFoundException('Projeto não encontrado');
+      throw new NotFoundException('Projeto não encontrado!');
     }
 
     return {
@@ -72,7 +72,7 @@ export class ProjectsController {
     const deleted = await this.projectsService.remove(id);
 
     if (!deleted) {
-      throw new NotFoundException('Projeto não encontrado');
+      throw new NotFoundException('Projeto não encontrado!');
     }
 
     return;
