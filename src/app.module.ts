@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -9,30 +9,45 @@ import { TechModule } from './tech/tech.module';
 import { DifferentialModule } from './differential/differential.module';
 import { WorkModule } from './work/work.module';
 
+// providers
+import { APP_GUARD } from '@nestjs/core';
+import { ApiKeyGuard } from './common/guard/api-key.guard';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env.development.local'],
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      database: process.env.DB_DATABASE,
-      host: process.env.DB_HOST,
-      password: process.env.DB_PASSWORD,
-      username: process.env.DB_USER,
-      port: Number(process.env.DB_PORT ?? 5432),
-      entities: [`${__dirname}/**/*.entity{.js,.ts}`],
-      migrations: [`${__dirname}/migration/{.ts,*.js}`],
-      migrationsRun: true,
+
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        type: 'postgres',
+        host: config.get<string>('DB_HOST'),
+        port: Number(config.get<string>('DB_PORT') ?? 5432),
+        username: config.get<string>('DB_USER'),
+        password: config.get<string>('DB_PASSWORD'),
+        database: config.get<string>('DB_DATABASE'),
+        entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+        migrations: [`${__dirname}/migration/{.ts,*.js}`],
+        migrationsRun: true,
+      }),
     }),
+
     HelloWorldModule,
     ProjectModule,
     TechModule,
     DifferentialModule,
     WorkModule,
   ],
-  controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ApiKeyGuard,
+    },
+  ],
 })
+
+// aplicação dos middlewares
 export class AppModule {}

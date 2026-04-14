@@ -2,11 +2,12 @@
 GET http://localhost:8080/differential
 
 ### get developer
-GET http://localhost:8080/differential/f4KRr9kdEdF5RqQJE4wvE
+GET http://localhost:8080/differential/35a06a26-e0d3-4b65-90fa-87766e04b424
 
 ### create developer
 POST http://localhost:8080/differential
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "title": "Palestrante",
@@ -16,10 +17,12 @@ Content-Type: application/json
 ### update developer
 PATCH http://localhost:8080/differential/MO15NfMGGaXQaFC1SGP5m
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "title": "Trovador"
 }
 
 ### delete developer
-DELETE http://localhost:8080/differential/MO15NfMGGaXQaFC1SGP5m
+DELETE http://localhost:8080/differential/35a06a26-e0d3-4b65-90fa-87766e04b424
+x-api-key: {{$dotenv.API_KEY}}

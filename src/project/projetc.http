@@ -7,6 +7,7 @@ GET http://localhost:8080/project/056ffa52-7bbd-424d-a2c5-3f126045bf06
 ### create developer
 POST http://localhost:8080/project
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "title": "CRUD Dinossauros",
@@ -18,6 +19,7 @@ Content-Type: application/json
 ### update developer
 PATCH http://localhost:8080/project/056ffa52-7bbd-424d-a2c5-3f126045bf06
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "title": "Crud Dinossauros"
@@ -25,3 +27,4 @@ Content-Type: application/json
 
 ### delete developer
 DELETE http://localhost:8080/project/056ffa52-7bbd-424d-a2c5-3f126045bf06
+x-api-key: {{$dotenv.API_KEY}}

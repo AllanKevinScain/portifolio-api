@@ -7,6 +7,7 @@ GET http://localhost:8080/work/953945ff-5918-4cbb-b0a7-f7302c152749
 ### create developer
 POST http://localhost:8080/work
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "title": "Faccat",
@@ -17,6 +18,7 @@ Content-Type: application/json
 ### update developer
 PATCH http://localhost:8080/work/953945ff-5918-4cbb-b0a7-f7302c152749
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "title": "Fac CLJ"
@@ -24,3 +26,4 @@ Content-Type: application/json
 
 ### delete developer
 DELETE http://localhost:8080/work/953945ff-5918-4cbb-b0a7-f7302c152749
+x-api-key: {{$dotenv.API_KEY}}

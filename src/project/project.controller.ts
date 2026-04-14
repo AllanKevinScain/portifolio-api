@@ -17,6 +17,7 @@ import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 
 import { type Response } from 'express';
+import { Protected } from 'src/common/decorators/protected.decorator';
 
 @Controller('project')
 export class ProjectController {
@@ -45,6 +46,7 @@ export class ProjectController {
   }
 
   @Post()
+  @Protected()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createProjectDto: CreateProjectDto) {
     return {
@@ -54,6 +56,7 @@ export class ProjectController {
   }
 
   @Patch(':id')
+  @Protected()
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateProjectDto,
@@ -71,6 +74,7 @@ export class ProjectController {
   }
 
   @Delete(':id')
+  @Protected()
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', new ParseUUIDPipe()) id: string) {
     const deleted = await this.projectService.remove(id);

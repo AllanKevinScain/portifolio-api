@@ -7,6 +7,7 @@ GET http://localhost:8080/tech/b4476208-547b-4fdc-94a4-2d3d056b3f7d
 ### create developer
 POST http://localhost:8080/tech
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "name": "React",
@@ -17,6 +18,7 @@ Content-Type: application/json
 ### update developer
 PATCH http://localhost:8080/tech/b4476208-547b-4fdc-94a4-2d3d056b3f7d
 Content-Type: application/json
+x-api-key: {{$dotenv.API_KEY}}
 
 {
     "nivel": "stack"
@@ -24,3 +26,4 @@ Content-Type: application/json
 
 ### delete developer
 DELETE http://localhost:8080/tech/b4476208-547b-4fdc-94a4-2d3d056b3f7d
+x-api-key: {{$dotenv.API_KEY}}

@@ -17,6 +17,7 @@ import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
 
 import { type Response } from 'express';
+import { Protected } from 'src/common/decorators/protected.decorator';
 
 @Controller('work')
 export class WorkController {
@@ -45,6 +46,7 @@ export class WorkController {
   }
 
   @Post()
+  @Protected()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createWorkDto: CreateWorkDto) {
     return {
@@ -54,6 +56,7 @@ export class WorkController {
   }
 
   @Patch(':id')
+  @Protected()
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateWorkDto,
@@ -71,6 +74,7 @@ export class WorkController {
   }
 
   @Delete(':id')
+  @Protected()
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', new ParseUUIDPipe()) id: string) {
     const deleted = await this.workService.remove(id);

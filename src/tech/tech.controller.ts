@@ -17,6 +17,7 @@ import { CreateTechDto } from './dto/create-tech.dto';
 import { UpdateTechDto } from './dto/update-tech.dto';
 
 import { type Response } from 'express';
+import { Protected } from 'src/common/decorators/protected.decorator';
 
 @Controller('tech')
 export class TechController {
@@ -45,6 +46,7 @@ export class TechController {
   }
 
   @Post()
+  @Protected()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createTechDto: CreateTechDto) {
     return {
@@ -54,6 +56,7 @@ export class TechController {
   }
 
   @Patch(':id')
+  @Protected()
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateTechDto,
@@ -71,6 +74,7 @@ export class TechController {
   }
 
   @Delete(':id')
+  @Protected()
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', new ParseUUIDPipe()) id: string) {
     const deleted = await this.techService.remove(id);

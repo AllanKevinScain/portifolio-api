@@ -1,4 +1,4 @@
-import { BasePortifolioEntity } from 'src/base.entity';
+import { BasePortifolioEntity } from 'src/common/entity/base.entity';
 import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'work' })

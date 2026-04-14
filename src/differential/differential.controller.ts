@@ -17,6 +17,7 @@ import { CreateDifferentialDto } from './dto/create-differential.dto';
 import { UpdateDifferentialDto } from './dto/update-differential.dto';
 
 import { type Response } from 'express';
+import { Protected } from 'src/common/decorators/protected.decorator';
 
 @Controller('differential')
 export class DifferentialController {
@@ -45,6 +46,7 @@ export class DifferentialController {
   }
 
   @Post()
+  @Protected()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() body: CreateDifferentialDto) {
     return {
@@ -54,6 +56,7 @@ export class DifferentialController {
   }
 
   @Patch(':id')
+  @Protected()
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateDifferentialDto,
@@ -71,6 +74,7 @@ export class DifferentialController {
   }
 
   @Delete(':id')
+  @Protected()
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id', new ParseUUIDPipe()) id: string) {
     const deleted = await this.differentialService.remove(id);
