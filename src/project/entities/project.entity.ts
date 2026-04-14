@@ -2,7 +2,7 @@ import { BasePortifolioEntity } from 'src/base.entity';
 import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'project' })
-export class Project extends BasePortifolioEntity {
+export class ProjectEntity extends BasePortifolioEntity {
   constructor(
     id: string,
     title: string,
