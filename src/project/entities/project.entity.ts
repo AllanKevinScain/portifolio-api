@@ -5,12 +5,14 @@ import { Column, Entity } from 'typeorm';
 export class ProjectEntity extends BasePortifolioEntity {
   constructor(
     id: string,
+    createdAt: Date,
+    updatedAt: Date,
     title: string,
     description: string,
     repository: string,
     demo: string,
   ) {
-    super(id);
+    super(id, createdAt, updatedAt);
     this.title = title;
     this.description = description;
     this.repository = repository;

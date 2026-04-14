@@ -3,8 +3,14 @@ import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'differential' })
 export class Differential extends BasePortifolioEntity {
-  constructor(id: string, title: string, description: string) {
-    super(id);
+  constructor(
+    id: string,
+    createdAt: Date,
+    updatedAt: Date,
+    title: string,
+    description: string,
+  ) {
+    super(id, createdAt, updatedAt);
     this.title = title;
     this.description = description;
   }

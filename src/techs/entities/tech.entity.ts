@@ -5,8 +5,15 @@ export type NivelType = 'junior' | 'mid' | 'senior' | 'stack';
 
 @Entity({ name: 'techs' })
 export class Tech extends BasePortifolioEntity {
-  constructor(id: string, name: string, description: string, nivel: NivelType) {
-    super(id);
+  constructor(
+    id: string,
+    createdAt: Date,
+    updatedAt: Date,
+    name: string,
+    description: string,
+    nivel: NivelType,
+  ) {
+    super(id, createdAt, updatedAt);
     this.name = name;
     this.description = description;
     this.nivel = nivel;

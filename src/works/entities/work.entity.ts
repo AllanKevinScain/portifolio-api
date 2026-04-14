@@ -3,8 +3,15 @@ import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'works' })
 export class Work extends BasePortifolioEntity {
-  constructor(id: string, title: string, description: string, image: string) {
-    super(id);
+  constructor(
+    id: string,
+    createdAt: Date,
+    updatedAt: Date,
+    title: string,
+    description: string,
+    image: string,
+  ) {
+    super(id, createdAt, updatedAt);
     this.title = title;
     this.description = description;
     this.image = image;

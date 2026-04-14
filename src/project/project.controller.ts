@@ -10,6 +10,7 @@ import {
   HttpStatus,
   NotFoundException,
   HttpCode,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
@@ -33,7 +34,7 @@ export class ProjectController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
     const proeject = await this.projectService.findOne(id);
 
     if (!proeject) {
@@ -53,7 +54,10 @@ export class ProjectController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateProjectDto) {
+  async update(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() body: UpdateProjectDto,
+  ) {
     const updated = await this.projectService.update(id, body);
 
     if (!updated) {
@@ -68,7 +72,7 @@ export class ProjectController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id') id: string) {
+  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
     const deleted = await this.projectService.remove(id);
 
     if (!deleted) {
