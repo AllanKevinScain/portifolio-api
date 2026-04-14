@@ -20,8 +20,6 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const port = parseInt(config.get('DB_PORT') ?? '3000', 10);
 
-  // await app.listen(port);
-  // console.log(`✅ API rodando em http://localhost:${port}`);
   await app.listen(port ?? 3000);
   console.log(`✅ portifolio-api rodando em http://localhost:${port}`);
 }
