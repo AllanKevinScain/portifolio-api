@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AppController } from './app.controller';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -9,6 +8,7 @@ import { DevelopersModule } from './developers/developers.module';
 import { TechsModule } from './techs/techs.module';
 import { WorksModule } from './works/works.module';
 import { DifferentialModule } from './differential/differential.module';
+import { HelloWorldModule } from './hello-world/hello-world.module';
 
 // NEON CONSOLE
 @Module({
@@ -28,13 +28,13 @@ import { DifferentialModule } from './differential/differential.module';
         },
       }),
     }),
+    HelloWorldModule,
     DevelopersModule,
     ProjectsModule,
     TechsModule,
     WorksModule,
     DifferentialModule,
   ],
-  controllers: [AppController],
 })
 export class AppModule {}
 
