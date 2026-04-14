@@ -10,6 +10,7 @@ import {
   HttpCode,
   HttpStatus,
   NotFoundException,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { DifferentialService } from './differential.service';
 import { CreateDifferentialDto } from './dto/create-differential.dto';
@@ -33,7 +34,7 @@ export class DifferentialController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
     const differential = await this.differentialService.findOne(id);
 
     if (!differential) {
@@ -53,7 +54,10 @@ export class DifferentialController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateDifferentialDto) {
+  async update(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() body: UpdateDifferentialDto,
+  ) {
     const updated = await this.differentialService.update(id, body);
 
     if (!updated) {
@@ -68,7 +72,7 @@ export class DifferentialController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id') id: string) {
+  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
     const deleted = await this.differentialService.remove(id);
 
     if (!deleted) {

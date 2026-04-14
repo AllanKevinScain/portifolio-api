@@ -1,16 +1,13 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateTableTech1776177616415 implements MigrationInterface {
+export class CreateTableDifferential1776178650475 implements MigrationInterface {
   public async up(queryRunner: QueryRunner) {
     queryRunner.query(`
-            CREATE TABLE public.tech (
+        CREATE TABLE public.differential (
                 id UUID PRIMARY KEY,
 
-                name VARCHAR(255) NOT NULL,
+                title VARCHAR(255) NOT NULL,
                 description TEXT NOT NULL,
-                nivel VARCHAR(20) NOT NULL CHECK (
-                    nivel IN ('junior', 'mid', 'senior', 'stack')
-                ),
 
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -19,6 +16,6 @@ export class CreateTableTech1776177616415 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner) {
-    queryRunner.query(`DROP TABLE public.tech`);
+    queryRunner.query(`DROP TABLE public.differential`);
   }
 }

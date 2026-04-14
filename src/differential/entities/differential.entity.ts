@@ -2,7 +2,7 @@ import { BasePortifolioEntity } from 'src/base.entity';
 import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'differential' })
-export class Differential extends BasePortifolioEntity {
+export class DifferentialEntity extends BasePortifolioEntity {
   constructor(
     id: string,
     createdAt: Date,

@@ -3,13 +3,13 @@ import { CreateDifferentialDto } from './dto/create-differential.dto';
 import { UpdateDifferentialDto } from './dto/update-differential.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Differential } from './entities/differential.entity';
+import { DifferentialEntity } from './entities/differential.entity';
 
 @Injectable()
 export class DifferentialService {
   constructor(
-    @InjectRepository(Differential)
-    private readonly repo: Repository<Differential>,
+    @InjectRepository(DifferentialEntity)
+    private readonly repo: Repository<DifferentialEntity>,
   ) {}
 
   findAll() {

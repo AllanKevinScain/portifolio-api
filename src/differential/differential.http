@@ -1,11 +1,11 @@
 ### list differential
-GET http://localhost:5432/differential
+GET http://localhost:8080/differential
 
 ### get developer
-GET http://localhost:5432/differential/f4KRr9kdEdF5RqQJE4wvE
+GET http://localhost:8080/differential/f4KRr9kdEdF5RqQJE4wvE
 
 ### create developer
-POST http://localhost:5432/differential
+POST http://localhost:8080/differential
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ### update developer
-PATCH http://localhost:5432/differential/MO15NfMGGaXQaFC1SGP5m
+PATCH http://localhost:8080/differential/MO15NfMGGaXQaFC1SGP5m
 Content-Type: application/json
 
 {
@@ -22,4 +22,4 @@ Content-Type: application/json
 }
 
 ### delete developer
-DELETE http://localhost:5432/differential/MO15NfMGGaXQaFC1SGP5m
+DELETE http://localhost:8080/differential/MO15NfMGGaXQaFC1SGP5m
