@@ -3,14 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ProjectsModule } from './projetcs/projects.module';
-import { DevelopersModule } from './developers/developers.module';
-import { TechsModule } from './techs/techs.module';
-import { WorksModule } from './works/works.module';
-import { DifferentialModule } from './differential/differential.module';
 import { HelloWorldModule } from './hello-world/hello-world.module';
+import { ProjectModule } from './project/project.module';
 
-// NEON CONSOLE
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -29,26 +24,7 @@ import { HelloWorldModule } from './hello-world/hello-world.module';
       }),
     }),
     HelloWorldModule,
-    DevelopersModule,
-    ProjectsModule,
-    TechsModule,
-    WorksModule,
-    DifferentialModule,
+    ProjectModule,
   ],
 })
 export class AppModule {}
-
-// TypeOrmModule.forRootAsync({
-//   inject: [ConfigService],
-//   useFactory: (config: ConfigService) => ({
-//     type: 'postgres',
-//     host: config.get('DB_HOST'),
-//     port: +config.get('DB_PORT'),
-//     username: config.get('DB_USER'),
-//     password: config.get('DB_PASS'),
-//     database: config.get('DB_NAME'),
-//     entities: [__dirname + '/**/*.entity.{ts,js}'],
-//     synchronize: true,
-//     ssl: { rejectUnauthorized: false },
-//   }),
-// }),

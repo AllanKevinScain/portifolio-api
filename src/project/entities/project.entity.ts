@@ -1,7 +1,7 @@
 import { BasePortifolioEntity } from 'src/base.entity';
 import { Column, Entity } from 'typeorm';
 
-@Entity({ name: 'projects' })
+@Entity({ name: 'project' })
 export class Project extends BasePortifolioEntity {
   constructor(
     id: string,

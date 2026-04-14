@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Project } from './entities/project.entity';
 import { Repository } from 'typeorm';
+import { Project } from './entities/project.entity';
 
 @Injectable()
-export class ProjectsService {
+export class ProjectService {
   constructor(
     @InjectRepository(Project)
     private readonly repo: Repository<Project>,

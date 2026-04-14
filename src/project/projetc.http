@@ -1,11 +1,11 @@
-### list projects
-GET http://localhost:5432/projects
+### list project
+GET http://localhost:8080/project
 
 ### get developer
-GET http://localhost:5432/projects/T-sOMfrt1-tVfovo_0dY2
+GET http://localhost:8080/project/hWRArPwzjFWgooLFiZcUH
 
 ### create developer
-POST http://localhost:5432/projects
+POST http://localhost:8080/project
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### update developer
-PATCH http://localhost:5432/projects/T-sOMfrt1-tVfovo_0dY2
+PATCH http://localhost:8080/project/IG2gQ9Tx7P_aS07kUrt9q
 Content-Type: application/json
 
 {
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ### delete developer
-DELETE http://localhost:5432/projects/T-sOMfrt1-tVfovo_0dY2
+DELETE http://localhost:8080/project/IG2gQ9Tx7P_aS07kUrt9q
