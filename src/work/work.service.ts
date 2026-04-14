@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Work } from './entities/work.entity';
+import { WorkEntity } from './entities/work.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class WorksService {
+export class WorkService {
   constructor(
-    @InjectRepository(Work)
-    private readonly repo: Repository<Work>,
+    @InjectRepository(WorkEntity)
+    private readonly repo: Repository<WorkEntity>,
   ) {}
 
   findAll() {

@@ -7,6 +7,7 @@ import { HelloWorldModule } from './hello-world/hello-world.module';
 import { ProjectModule } from './project/project.module';
 import { TechModule } from './tech/tech.module';
 import { DifferentialModule } from './differential/differential.module';
+import { WorkModule } from './work/work.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { DifferentialModule } from './differential/differential.module';
     ProjectModule,
     TechModule,
     DifferentialModule,
+    WorkModule,
   ],
   controllers: [],
   providers: [],

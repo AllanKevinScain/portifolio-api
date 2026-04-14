@@ -1,29 +1,30 @@
 import {
+  Controller,
   Get,
   Post,
   Body,
   Patch,
   Param,
   Delete,
-  HttpCode,
-  HttpStatus,
   Res,
+  HttpStatus,
   NotFoundException,
-  Controller,
+  HttpCode,
+  ParseUUIDPipe,
 } from '@nestjs/common';
-import { WorksService } from './works.service';
+import { WorkService } from './work.service';
 import { CreateWorkDto } from './dto/create-work.dto';
 import { UpdateWorkDto } from './dto/update-work.dto';
 
 import { type Response } from 'express';
 
-@Controller('works')
-export class WorksController {
-  constructor(private readonly worksService: WorksService) {}
+@Controller('work')
+export class WorkController {
+  constructor(private readonly workService: WorkService) {}
 
   @Get()
   async findAll(@Res() res: Response) {
-    const works = await this.worksService.findAll();
+    const works = await this.workService.findAll();
 
     if (works.length === 0) {
       return res.status(HttpStatus.NO_CONTENT).send();
@@ -33,8 +34,8 @@ export class WorksController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const work = await this.worksService.findOne(id);
+  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
+    const work = await this.workService.findOne(id);
 
     if (!work) {
       throw new NotFoundException('Trabalho ou evento não encontrado!');
@@ -48,13 +49,16 @@ export class WorksController {
   async create(@Body() createWorkDto: CreateWorkDto) {
     return {
       message: 'Trabalho ou evento criado com sucesso!',
-      data: await this.worksService.create(createWorkDto),
+      data: await this.workService.create(createWorkDto),
     };
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateWorkDto) {
-    const updated = await this.worksService.update(id, body);
+  async update(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() body: UpdateWorkDto,
+  ) {
+    const updated = await this.workService.update(id, body);
 
     if (!updated) {
       throw new NotFoundException('Trabalho ou evento não encontrado!');
@@ -68,8 +72,8 @@ export class WorksController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id') id: string) {
-    const deleted = await this.worksService.remove(id);
+  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
+    const deleted = await this.workService.remove(id);
 
     if (!deleted) {
       throw new NotFoundException('Trabalho não encontrado!');
