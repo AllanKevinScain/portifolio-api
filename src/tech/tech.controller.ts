@@ -10,20 +10,21 @@ import {
   HttpStatus,
   NotFoundException,
   HttpCode,
+  ParseUUIDPipe,
 } from '@nestjs/common';
-import { TechsService } from './techs.service';
+import { TechService } from './tech.service';
 import { CreateTechDto } from './dto/create-tech.dto';
 import { UpdateTechDto } from './dto/update-tech.dto';
 
 import { type Response } from 'express';
 
-@Controller('techs')
-export class TechsController {
-  constructor(private readonly techsService: TechsService) {}
+@Controller('tech')
+export class TechController {
+  constructor(private readonly techService: TechService) {}
 
   @Get()
   async findAll(@Res() res: Response) {
-    const projects = await this.techsService.findAll();
+    const projects = await this.techService.findAll();
 
     if (projects.length === 0) {
       return res.status(HttpStatus.NO_CONTENT).send();
@@ -33,8 +34,8 @@ export class TechsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const proeject = await this.techsService.findOne(id);
+  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
+    const proeject = await this.techService.findOne(id);
 
     if (!proeject) {
       throw new NotFoundException('Tecnologia não encontrada!');
@@ -48,13 +49,16 @@ export class TechsController {
   async create(@Body() createTechDto: CreateTechDto) {
     return {
       message: 'Tecnologia criada com sucesso!',
-      data: await this.techsService.create(createTechDto),
+      data: await this.techService.create(createTechDto),
     };
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() body: UpdateTechDto) {
-    const updated = await this.techsService.update(id, body);
+  async update(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() body: UpdateTechDto,
+  ) {
+    const updated = await this.techService.update(id, body);
 
     if (!updated) {
       throw new NotFoundException('Tecnologia não encontrada!');
@@ -68,8 +72,8 @@ export class TechsController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id') id: string) {
-    const deleted = await this.techsService.remove(id);
+  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
+    const deleted = await this.techService.remove(id);
 
     if (!deleted) {
       throw new NotFoundException('Tecnologia não encontrada!');

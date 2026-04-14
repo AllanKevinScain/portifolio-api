@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { CreateTechDto } from './dto/create-tech.dto';
 import { UpdateTechDto } from './dto/update-tech.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Tech } from './entities/tech.entity';
+import { TechEntity } from './entities/tech.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class TechsService {
+export class TechService {
   constructor(
-    @InjectRepository(Tech)
-    private readonly repo: Repository<Tech>,
+    @InjectRepository(TechEntity)
+    private readonly repo: Repository<TechEntity>,
   ) {}
 
   findAll() {

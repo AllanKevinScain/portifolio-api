@@ -1,0 +1,26 @@
+### list tech
+GET http://localhost:8080/tech
+
+### get developer
+GET http://localhost:8080/tech/b4476208-547b-4fdc-94a4-2d3d056b3f7d
+
+### create developer
+POST http://localhost:8080/tech
+Content-Type: application/json
+
+{
+    "name": "React",
+    "description": "Expert.",
+    "nivel": "mid"
+}
+
+### update developer
+PATCH http://localhost:8080/tech/b4476208-547b-4fdc-94a4-2d3d056b3f7d
+Content-Type: application/json
+
+{
+    "nivel": "stack"
+}
+
+### delete developer
+DELETE http://localhost:8080/tech/b4476208-547b-4fdc-94a4-2d3d056b3f7d

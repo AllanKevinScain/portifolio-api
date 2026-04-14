@@ -3,8 +3,8 @@ import { Column, Entity } from 'typeorm';
 
 export type NivelType = 'junior' | 'mid' | 'senior' | 'stack';
 
-@Entity({ name: 'techs' })
-export class Tech extends BasePortifolioEntity {
+@Entity({ name: 'tech' })
+export class TechEntity extends BasePortifolioEntity {
   constructor(
     id: string,
     createdAt: Date,

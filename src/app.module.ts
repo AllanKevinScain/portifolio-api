@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { HelloWorldModule } from './hello-world/hello-world.module';
 import { ProjectModule } from './project/project.module';
+import { TechModule } from './tech/tech.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ProjectModule } from './project/project.module';
     }),
     HelloWorldModule,
     ProjectModule,
+    TechModule,
   ],
   controllers: [],
   providers: [],
