@@ -28,8 +28,6 @@ COPY --from=deps /usr/src/api/node_modules ./node_modules
 COPY --from=builder /usr/src/api/dist ./dist
 COPY --from=builder /usr/src/api/package.json ./package.json
 
-COPY .env.production ./.env
-
 EXPOSE 8080
 
 CMD ["npm", "run", "start:prod"]
