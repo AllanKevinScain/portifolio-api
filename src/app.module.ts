@@ -17,7 +17,6 @@ import { ApiKeyGuard } from './common/guard/api-key.guard';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env.development.local'],
     }),
 
     TypeOrmModule.forRootAsync({
@@ -32,6 +31,10 @@ import { ApiKeyGuard } from './common/guard/api-key.guard';
         entities: [`${__dirname}/**/*.entity{.js,.ts}`],
         migrations: [`${__dirname}/migration/{.ts,*.js}`],
         migrationsRun: true,
+        ssl:
+          config.get<string>('DB_SSL') === 'true'
+            ? { rejectUnauthorized: false }
+            : false,
       }),
     }),
 

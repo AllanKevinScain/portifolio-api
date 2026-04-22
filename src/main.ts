@@ -10,8 +10,9 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ResponseInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());
 
-  await app.listen(8080);
-  console.log(`✅ portifolio-api rodando em http://localhost:8080`);
+  const port = process.env.PORT ?? 8080;
+  await app.listen(port);
+  console.log(`✅ portifolio-api rodando na porta ${port}`);
 }
 
 void bootstrap();
