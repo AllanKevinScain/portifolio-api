@@ -34,7 +34,8 @@ import databaseConfig, { DatabaseConfig } from './config/database.config';
           migrationsRun: true,
           schema: 'portifolio',
           migrationsTableName: 'migrations',
-          logging: true,
+          // logging: true,
+          // synchronize: true, // development
         };
       },
     }),
