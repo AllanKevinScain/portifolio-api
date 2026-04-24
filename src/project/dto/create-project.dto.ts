@@ -1,4 +1,4 @@
-import { IsString, IsUrl } from 'class-validator';
+import { IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class CreateProjectDto {
   constructor(
@@ -23,6 +23,7 @@ export class CreateProjectDto {
   @IsUrl()
   repository: string;
 
+  @IsOptional()
   @IsString()
   @IsUrl()
   demo?: string;
