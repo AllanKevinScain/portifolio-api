@@ -32,6 +32,8 @@ import databaseConfig, { DatabaseConfig } from './config/database.config';
           entities: [`${__dirname}/**/*.entity.js`],
           migrations: [`${__dirname}/migration/*.js`],
           migrationsRun: true,
+          schema: 'portifolio',
+          migrationsTableName: 'migrations',
           logging: true,
         };
       },
