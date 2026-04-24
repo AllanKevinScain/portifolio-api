@@ -26,8 +26,9 @@ export class ResponseInterceptor implements NestInterceptor {
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
+    console.error(exception);
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse<Response>(); // ✅ tipado
+    const response = ctx.getResponse<Response>();
 
     const status = exception.getStatus();
     const exceptionResponse = exception.getResponse();
