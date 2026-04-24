@@ -32,7 +32,7 @@ import databaseConfig, { DatabaseConfig } from './config/database.config';
           entities: [`${__dirname}/**/*.entity{.js,.ts}`],
           migrations: [`${__dirname}/migration/{*.ts,*.js}`],
           migrationsRun: true,
-          synchronize: true,
+          // synchronize: true,
         };
       },
     }),
