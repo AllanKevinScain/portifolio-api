@@ -8,5 +8,7 @@ export class AlterProjectDemoField1777052911394 implements MigrationInterface {
     `);
   }
 
-  public async down(): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(``);
+  }
 }
