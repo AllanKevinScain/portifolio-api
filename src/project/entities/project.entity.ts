@@ -28,6 +28,6 @@ export class ProjectEntity extends BasePortifolioEntity {
   @Column()
   repository: string;
 
-  @Column()
-  demo: string;
+  @Column({ nullable: true })
+  demo?: string;
 }

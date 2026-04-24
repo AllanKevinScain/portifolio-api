@@ -25,5 +25,5 @@ export class CreateProjectDto {
 
   @IsString()
   @IsUrl()
-  demo: string;
+  demo?: string;
 }
