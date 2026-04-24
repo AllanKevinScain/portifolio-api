@@ -31,10 +31,6 @@ import { ApiKeyGuard } from './common/guard/api-key.guard';
         entities: [`${__dirname}/**/*.entity{.js,.ts}`],
         migrations: [`${__dirname}/migration/{.ts,*.js}`],
         migrationsRun: true,
-        ssl:
-          config.get<string>('DB_SSL') === 'true'
-            ? { rejectUnauthorized: false }
-            : false,
       }),
     }),
 
