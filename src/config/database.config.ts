@@ -7,11 +7,11 @@ export interface DatabaseConfig {
   username: string;
   password: string;
   database: string;
-  ssl: false | { rejectUnauthorized: boolean };
+  //   ssl: false | { rejectUnauthorized: boolean };
 }
 
 export default registerAs('database', (): DatabaseConfig => {
-  const isProd = process.env.NODE_ENV === 'production';
+  //   const isProd = process.env.NODE_ENV === 'production';
 
   return {
     type: 'postgres' as const,
@@ -21,10 +21,10 @@ export default registerAs('database', (): DatabaseConfig => {
     password: process.env.DB_PASSWORD as string,
     database: process.env.DB_DATABASE as string,
 
-    ssl: isProd
-      ? {
-          rejectUnauthorized: false,
-        }
-      : false,
+    // ssl: isProd
+    //   ? {
+    //       rejectUnauthorized: false,
+    //     }
+    //   : false,
   };
 });
