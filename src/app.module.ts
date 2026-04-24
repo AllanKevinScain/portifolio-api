@@ -12,26 +12,27 @@ import { WorkModule } from './work/work.module';
 // providers
 import { APP_GUARD } from '@nestjs/core';
 import { ApiKeyGuard } from './common/guard/api-key.guard';
+import databaseConfig, { DatabaseConfig } from './config/database.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      load: [databaseConfig],
     }),
 
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        host: config.get<string>('DB_HOST'),
-        port: Number(config.get<string>('DB_PORT') ?? 5432),
-        username: config.get<string>('DB_USER'),
-        password: config.get<string>('DB_PASSWORD'),
-        database: config.get<string>('DB_DATABASE'),
-        entities: [`${__dirname}/**/*.entity{.js,.ts}`],
-        migrations: [`${__dirname}/migration/{.ts,*.js}`],
-        migrationsRun: true,
-      }),
+      useFactory: (config: ConfigService) => {
+        const db = config.get('database') as DatabaseConfig;
+
+        return {
+          ...db,
+          entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+          migrations: [`${__dirname}/migration/{.ts,*.js}`],
+          migrationsRun: true,
+        };
+      },
     }),
 
     HelloWorldModule,
