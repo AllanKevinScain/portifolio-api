@@ -29,8 +29,8 @@ import databaseConfig, { DatabaseConfig } from './config/database.config';
 
         return {
           ...db,
-          entities: [`${__dirname}/**/*.entity{.ts}`],
-          migrations: [`${__dirname}/migration/{*.ts}`],
+          entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+          migrations: [`${__dirname}/migration/{.ts,*.js}`],
           migrationsRun: true,
         };
       },
