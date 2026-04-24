@@ -2,8 +2,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class CreateTableDifferential1776178650475 implements MigrationInterface {
   public async up(queryRunner: QueryRunner) {
-    queryRunner.query(`
-        CREATE TABLE public.differential (
+    await queryRunner.query(`
+        CREATE TABLE differential (
                 id UUID PRIMARY KEY,
 
                 title VARCHAR(255) NOT NULL,
@@ -16,6 +16,6 @@ export class CreateTableDifferential1776178650475 implements MigrationInterface 
   }
 
   public async down(queryRunner: QueryRunner) {
-    queryRunner.query(`DROP TABLE public.differential`);
+    await queryRunner.query(`DROP TABLE differential`);
   }
 }

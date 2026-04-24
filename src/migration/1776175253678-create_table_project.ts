@@ -2,8 +2,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class CreateTableProject1776175253678 implements MigrationInterface {
   public async up(queryRunner: QueryRunner) {
-    queryRunner.query(`
-        CREATE TABLE public.project (
+    await queryRunner.query(`
+        CREATE TABLE project (
                 id UUID PRIMARY KEY,
 
                 title VARCHAR(255) NOT NULL,
@@ -18,6 +18,6 @@ export class CreateTableProject1776175253678 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner) {
-    queryRunner.query(`rop table public.project`);
+    await queryRunner.query(`DROP TABLE project`);
   }
 }

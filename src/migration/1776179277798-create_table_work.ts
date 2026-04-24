@@ -2,8 +2,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export class CreateTableWork1776179277798 implements MigrationInterface {
   public async up(queryRunner: QueryRunner) {
-    queryRunner.query(`
-            CREATE TABLE public.work (
+    await queryRunner.query(`
+            CREATE TABLE work (
                 id UUID PRIMARY KEY,
 
                 title VARCHAR(255) NOT NULL,
@@ -17,6 +17,6 @@ export class CreateTableWork1776179277798 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner) {
-    queryRunner.query(`DROP TABLE public.work`);
+    await queryRunner.query(`DROP TABLE work`);
   }
 }
